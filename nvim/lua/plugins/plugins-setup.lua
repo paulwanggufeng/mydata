@@ -35,8 +35,18 @@ return require('packer').startup(function(use)
       'nvim-tree/nvim-web-devicons', -- 文档树图标
     }
   }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- sort
   use "christoomey/vim-tmux-navigator" -- 用ctl-hjkl来定位窗口
+
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',  -- 文件检索
+    requires = {
+      {'nvim-lua/plenary.nvim'}
+    }
+  }
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim', run = 'make'
+  }
+
   use "nvim-treesitter/nvim-treesitter" -- 语法高亮
   use "p00f/nvim-ts-rainbow" -- 配合treesitter，不同括号颜色区分
   use {
@@ -44,7 +54,8 @@ return require('packer').startup(function(use)
     "williamboman/mason-lspconfig.nvim",  -- 这个相当于mason.nvim和lspconfig的桥梁
     "neovim/nvim-lspconfig"
   }
-    -- 自动补全
+  
+ -- 自动补全
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "L3MON4D3/LuaSnip" -- snippets引擎，不装这个自动补全会出问题
@@ -57,16 +68,6 @@ return require('packer').startup(function(use)
 
   use "akinsho/bufferline.nvim" -- buffer分割线
   use "lewis6991/gitsigns.nvim" -- 左则git提示
-
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',  -- 文件检索
-    requires = {
-      {'nvim-lua/plenary.nvim'}
-    }
-  }
-  use {
-    'nvim-telescope/telescope-fzf-native.nvim', run = 'make'
-  }
 
   if packer_bootstrap then
     require('packer').sync()

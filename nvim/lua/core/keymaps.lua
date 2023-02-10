@@ -2,6 +2,11 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
+-- 命令
+vim.cmd([[ 
+  cnoreabbrev Q qa
+]])
+
 -- ---------- 插入模式 ---------- ---
 -- keymap.set("i", "jk", "<ESC>")
 
@@ -25,3 +30,4 @@ keymap.set("n", "<A-H>", ":bprevious<CR>")
 -- ---------- 插件 ---------- ---
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+

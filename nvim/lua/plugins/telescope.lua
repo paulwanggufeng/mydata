@@ -15,7 +15,12 @@ require('telescope').setup {
 	  file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
 	  grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
 	  qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-	},
+    mappings = {
+      n = {
+        ['<C-d>'] = require('telescope.actions').delete_buffer
+      }
+    } -- mappings
+	}, -- defaults
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
