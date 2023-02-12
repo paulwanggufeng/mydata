@@ -8,7 +8,8 @@ vim.cmd([[
 ]])
 
 -- ---------- 插入模式 ---------- ---
--- keymap.set("i", "jk", "<ESC>")
+-- Ctrl+Backspace, Ctrl+H 等于向前删除一个 word
+keymap.set("i", "<C-H>", "<C-w>")
 
 -- ---------- 视觉模式 ---------- ---
 -- 单行或多行移动
@@ -30,4 +31,7 @@ keymap.set("n", "<A-H>", ":bprevious<CR>")
 -- ---------- 插件 ---------- ---
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+
+-- clangd
+keymap.set("n", "<F10>", ":ClangdSwitchSourceHeader<CR>")
 

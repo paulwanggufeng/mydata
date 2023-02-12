@@ -64,10 +64,15 @@ return require('packer').startup(function(use)
   use "hrsh7th/cmp-path" -- 文件路径
 
   use "numToStr/Comment.nvim" -- gcc和gc注释
+  -- use "sbdchd/neoformat" -- 格式化
   use "windwp/nvim-autopairs" -- 自动补全括号
 
   use "akinsho/bufferline.nvim" -- buffer分割线
   use "lewis6991/gitsigns.nvim" -- 左则git提示
+
+use {
+  "folke/which-key.nvim",
+}
 
   if packer_bootstrap then
     require('packer').sync()
