@@ -69,6 +69,8 @@ return require('packer').startup(function(use)
   use "windwp/nvim-autopairs" -- 自动补全括号
 
   use "akinsho/bufferline.nvim" -- buffer分割线
+
+  -- git
   use "lewis6991/gitsigns.nvim" -- 左则git提示
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
