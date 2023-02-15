@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",  -- 这个相当于mason.nvim和lspconfig的桥梁
+    "williamboman/nvim-lsp-installer",
     "neovim/nvim-lspconfig"
   }
 
@@ -69,10 +70,9 @@ return require('packer').startup(function(use)
 
   use "akinsho/bufferline.nvim" -- buffer分割线
   use "lewis6991/gitsigns.nvim" -- 左则git提示
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
-use {
-  "folke/which-key.nvim",
-}
+  use { "folke/which-key.nvim",  }
 
   if packer_bootstrap then
     require('packer').sync()

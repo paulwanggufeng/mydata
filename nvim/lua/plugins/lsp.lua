@@ -5,7 +5,8 @@ require("mason").setup({
           package_pending = "➜",
           package_uninstalled = "✗"
       }
-  }
+  },
+  PATH = "prepend",
 })
 
 -- Mappings.
@@ -52,19 +53,20 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
+require("nvim-lsp-installer").setup {}
+
 require("mason-lspconfig").setup({
   -- 确保安装，根据需要填写
   ensure_installed = {
-    -- "sumneko_lua",
+    "lua_ls",
   },
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require("lspconfig").sumneko_lua.setup {
+require("lspconfig").lua_ls.setup {
   capabilities = capabilities,
 }
-
 
 -- vim.g.neoformat_cpp_clangformat = {
 --   'exe': 'clang-format',
