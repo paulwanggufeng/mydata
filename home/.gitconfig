@@ -1,0 +1,24 @@
+[credential]
+	helper = store --file ~/.git-credentials
+[user]
+	name = PaulWang
+	email = pwang@email.com
+
+[diff]
+    tool = nvimdiff
+[merge]
+	tool = nvim
+	; tool = nvimdiff
+	; conflictstyle = nvimdiff3
+[mergetool "nvim"]
+    cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+; [mergetool "nvimdiff"]
+;     layout = LOCAL,MERGED,REMOTE
+[mergetool]
+    prompt = false
+
+
+[core]
+	autocrlf = input
+
+
