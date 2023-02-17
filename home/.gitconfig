@@ -4,8 +4,6 @@
 	name = PaulWang
 	email = pwang@email.com
 
-[diff]
-    tool = nvimdiff
 [merge]
 	tool = nvim
 	; tool = nvimdiff
