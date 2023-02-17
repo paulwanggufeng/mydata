@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
     }
   }
   use "christoomey/vim-tmux-navigator" -- 用ctl-hjkl来定位窗口
+  use {'ojroques/nvim-bufdel'}
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',  -- 文件检索

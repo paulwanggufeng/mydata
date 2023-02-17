@@ -34,3 +34,9 @@ opt.smartcase = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 vim.cmd[[colorscheme tokyonight-moon]]
+
+
+-- Buffers/Tabs/Windows
+opt.hidden = true
+
+
