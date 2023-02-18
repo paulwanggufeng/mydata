@@ -19,12 +19,11 @@ person data
     + md
     + 
 
-* 缩进
-    + cpp 文件缩进设成 4
-
 
 * 快捷键
     + gd, K, gr, <space>rn
+    + NvimTree
+      - g? 显示快捷键
 
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -39,4 +38,14 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<C-A-L>', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+
+可自行文件
+/etc/rc.local
+
+#!/bin/sh -e
+
+sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o umask=022
+
+
 
