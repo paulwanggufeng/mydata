@@ -56,6 +56,18 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig"
   }
 
+use {
+  "folke/trouble.nvim",
+  requires = "nvim-tree/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+
  -- 自动补全
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
@@ -67,6 +79,14 @@ return require('packer').startup(function(use)
   use "numToStr/Comment.nvim" -- gcc和gc注释
   -- use "sbdchd/neoformat" -- 格式化
   use "windwp/nvim-autopairs" -- 自动补全括号
+
+--   use({
+--     "jose-elias-alvarez/null-ls.nvim",
+--     -- config = function()
+--     --     require("null-ls").setup()
+--     -- end,
+--     requires = { "nvim-lua/plenary.nvim" },
+-- })
 
   use "akinsho/bufferline.nvim" -- buffer分割线
 
