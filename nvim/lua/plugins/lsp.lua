@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
@@ -58,15 +58,15 @@ require("nvim-lsp-installer").setup {}
 require("mason-lspconfig").setup({
   -- 确保安装，根据需要填写
   ensure_installed = {
-    "lua_ls",
+    -- "lua_ls",
   },
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require("lspconfig").lua_ls.setup {
-  capabilities = capabilities,
-}
+-- require("lspconfig").lua_ls.setup {
+--       capabilities = capabilities,
+-- }
 
 -- vim.g.neoformat_cpp_clangformat = {
 --   'exe': 'clang-format',
@@ -79,6 +79,6 @@ require("lspconfig").lua_ls.setup {
 require("lspconfig").clangd.setup {
   on_attach = on_attach,
   flags = lsp_flags,
-
+  cmd = { "clangd", '--background-index', '--clang-tidy' }
 }
 
