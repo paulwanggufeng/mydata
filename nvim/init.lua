@@ -16,4 +16,7 @@ require("plugins/telescope")
 require("plugins/which-key")
 require("plugins/gitsigns")
 -- require("plugins/diffview")
+require("plugins/peek")
+require("plugins/wilder")
+require("plugins/toggleterm")
 
