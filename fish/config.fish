@@ -12,3 +12,5 @@ set -gx LC_ALL en_US.UTF-8
 # for ls
 set -gx LANGUAGE en_US:en
 
+set -gx DENO_INSTALL $HOME/.deno
+
