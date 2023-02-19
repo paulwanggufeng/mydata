@@ -7,6 +7,11 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})  -- 环境里要安装r
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+vim.keymap.set('n', '<leader><space>', '<cmd>Telescope buffers<cr>')
+vim.keymap.set('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
+vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
+
+
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 require('telescope').setup {
