@@ -37,6 +37,7 @@ vim.cmd[[colorscheme tokyonight-moon]]
 
 
 -- Buffers/Tabs/Windows
+-- bdelete, BufDel require hidden 
 opt.hidden = true
 
 
