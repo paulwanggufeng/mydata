@@ -1,11 +1,7 @@
 person data
 
 
-* comment
 * search
-    + text
-    + file
-    
     + class, function
     + find usages
     + set exclude directory (e.g. build/debug/release)
@@ -18,6 +14,9 @@ person data
 * plugins
     + md
     + 
+
+* command
+    + NvimTreeFindFile 跳转到 NvimTree 上文件对应位置
 
 
 * 快捷键
