@@ -9,7 +9,7 @@ if status is-interactive
     alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
     alias vi nvim
-    alias lg "/usr/local/bin/lazygit"   
+    alias lg lazygit
 end
 
 # set -x CLANG_FORMAT_TOOL /opt/tools/clang-format
