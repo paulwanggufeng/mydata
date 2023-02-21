@@ -64,17 +64,9 @@ require("mason-lspconfig").setup({
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- require("lspconfig").lua_ls.setup {
---       capabilities = capabilities,
--- }
-
--- vim.g.neoformat_cpp_clangformat = {
---   'exe': 'clang-format',
---   'args': ['--style="{IndentWidth: 4}"'],
---   'stdin': 1
--- }
--- vim.g.neoformat_enabled_cpp = ['clangformat']
--- vim.g.neoformat_enabled_c= ['clangformat']
+require("lspconfig").lua_ls.setup {
+      capabilities = capabilities,
+}
 
 require("lspconfig").clangd.setup {
   on_attach = on_attach,
