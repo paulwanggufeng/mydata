@@ -17,6 +17,9 @@ person data
 
 * command
     + NvimTreeFindFile 跳转到 NvimTree 上文件对应位置
+    + :Telescope live_grep search_dirs=. 在指定目录搜索文件内容
+    + in file grep window <M-q> send_selected_to_qlist + open
+    + in file grep window <C-q> send_to_qlist + open
 
 
 * 快捷键
