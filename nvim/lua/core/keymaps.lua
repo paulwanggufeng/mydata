@@ -35,4 +35,5 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 -- clangd
 keymap.set("n", "<F10>", ":ClangdSwitchSourceHeader<CR>")
 keymap.set("n", "<C-F12>", ":Telescope lsp_document_symbols<CR>")
+keymap.set('n', '<leader>gf', ':Telescope git_status<CR>')
 
