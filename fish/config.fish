@@ -24,5 +24,6 @@ set -gx LANGUAGE en_US:en
 
 set -gx DENO_INSTALL $HOME/.deno
 
-fish_add_path /usr/local/go/bin
+# fish_add_path -U ~/.local/bin/
+
 
