@@ -12,6 +12,7 @@ vim.keymap.set('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
 vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
 
 
+
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 require('telescope').setup {
@@ -22,7 +23,7 @@ require('telescope').setup {
 	  qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
     mappings = {
       n = {
-        ['<C-d>'] = require('telescope.actions').delete_buffer
+        ['<C-d>'] = require('telescope.actions').delete_buffer,
       }
     } -- mappings
 	}, -- defaults

@@ -5,6 +5,7 @@ local keymap = vim.keymap
 -- 命令
 vim.cmd([[ 
   cnoreabbrev Q qa
+  vnoremap <C-c> "*y
 ]])
 
 -- ---------- 插入模式 ---------- ---
@@ -27,6 +28,26 @@ keymap.set("n", "<leader>nl", ":nohl<CR>")
 -- 切换buffer
 keymap.set("n", "<A-L>", ":bnext<CR>")
 keymap.set("n", "<A-H>", ":bprevious<CR>")
+keymap.set("n", "<leader>bd", ":BufDel<CR>")
+
+-- quicklist
+vim.cmd([[
+function!   QuickFixOpenAll()
+    if empty(getqflist())
+        return
+    endif
+    let s:prev_val = ""
+    for d in getqflist()
+        let s:curr_val = bufname(d.bufnr)
+        if (s:curr_val != s:prev_val)
+            exec "edit " . s:curr_val
+        endif
+        let s:prev_val = s:curr_val
+    endfor
+endfunction
+]])
+vim.api.nvim_set_keymap('n', '<leader>ka' , ':call QuickFixOpenAll()<CR>', { noremap=true, silent=false })
+
 
 -- ---------- 插件 ---------- ---
 -- nvim-tree
@@ -34,6 +55,7 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- clangd
 keymap.set("n", "<F10>", ":ClangdSwitchSourceHeader<CR>")
-keymap.set("n", "<C-F12>", ":Telescope lsp_document_symbols<CR>")
+keymap.set("n", "<C-F12>", ":Telescope lsp_document_symbols<CR>", { noremap=true })
 keymap.set('n', '<leader>gf', ':Telescope git_status<CR>')
+
 
