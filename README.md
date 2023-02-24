@@ -29,6 +29,9 @@ person data
     + NvimTree
       - g? 显示快捷键
 
+* installed
+    + exa, nnn
+
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
