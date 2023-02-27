@@ -21,6 +21,8 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- 窗口
 keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
+keymap.set("n", "<F7>", "]c") -- jump to next diff
+keymap.set("n", "<S-F7>", "[c") -- jump to next diff
 
 -- 取消高亮
 keymap.set("n", "<leader>nl", ":nohl<CR>")
