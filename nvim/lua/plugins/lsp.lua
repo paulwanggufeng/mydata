@@ -1,18 +1,18 @@
 require("mason").setup({
-  ui = {
-      icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗"
-      }
-  },
-  PATH = "prepend",
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    },
+    PATH = "prepend",
 })
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<space>do', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
@@ -25,13 +25,13 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
@@ -49,29 +49,63 @@ local on_attach = function(client, bufnr)
 end
 
 local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
 }
 
-require("nvim-lsp-installer").setup {}
+-- require("nvim-lsp-installer").setup {}
 
 require("mason-lspconfig").setup({
-  -- 确保安装，根据需要填写
-  ensure_installed = {
-    -- "lua_ls",
-  },
+    -- 确保安装，根据需要填写
+    ensure_installed = {
+    },
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("lspconfig").lua_ls.setup {
-      capabilities = capabilities,
+    on_attach = on_attach,
+    cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            },
+        },
+    },
+    -- Lua = {
+    --     format = {
+    --         enable = true,
+    --         -- Put format options here
+    --         -- NOTE: the value should be STRING!!
+    --         defaultConfig = {
+    --             indent_style = "space",
+    --             indent_size = "2",
+    --         }
+    --     },
+    -- }
 }
 
 require("lspconfig").clangd.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  cmd = { "clangd", '--background-index', '--clang-tidy' }
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+    cmd = { "clangd", '--background-index', '--clang-tidy' }
 }
 
+
+-- lspconfig.ccls.setup {
+--     on_attach = on_attach,
+--     --   flags = lsp_flags,
+--     -- capabilities = capabilities,
+--     init_options = {
+--         cache = {
+--             directory = ".ccls-cache",
+--         },
+--         clang = {
+--             excludeArgs = { "-frounding-math" },
+--         },
+--     }
+-- }
