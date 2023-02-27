@@ -22,6 +22,9 @@ person data
     + in file grep window <C-q> send_to_qlist + open
     + open all quicklist files - <leader>ka
     + ]c jump to next diff ([c)
+    + <leader>fd open diagnostic
+    + ]d next diagnostic
+    + <leader>ca code action 应用diagnostic修改建议
 
 
 * 快捷键
