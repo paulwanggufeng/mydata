@@ -1,5 +1,7 @@
 CompileFlags:
     Add:
+    -ferror-limit=0
+
     - -I/usr/include/c++/12
     - -I/usr/include/x86_64-linux-gnu/c++/12
     - -I/usr/include/c++/12/backward
