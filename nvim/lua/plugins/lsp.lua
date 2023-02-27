@@ -88,16 +88,8 @@ require("lspconfig").lua_ls.setup {
     -- }
 }
 
-require("lspconfig").clangd.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    cmd = { "clangd", '--background-index', '--clang-tidy' }
-}
-
-
--- lspconfig.ccls.setup {
---     on_attach = on_attach,
+-- require("lspconfig").ccls.setup {
+--     -- on_attach = on_attach,
 --     --   flags = lsp_flags,
 --     -- capabilities = capabilities,
 --     init_options = {
@@ -109,3 +101,12 @@ require("lspconfig").clangd.setup {
 --         },
 --     }
 -- }
+
+require("lspconfig").clangd.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+    cmd = { "clangd", '--background-index', '--clang-tidy' }
+}
+
+
