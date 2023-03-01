@@ -1,0 +1,12 @@
+CompileFlags:
+    Add:
+    -ferror-limit=0
+
+    - -I/opt/rh/devtoolset-11/root/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11
+    - -I/opt/rh/devtoolset-11/root/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/x86_64-redhat-linux
+    - -I/opt/rh/devtoolset-11/root/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/backward
+    - -I/opt/rh/devtoolset-11/root/usr/lib/gcc/x86_64-redhat-linux/11/include
+    - -I/usr/local/include
+    - -I/opt/rh/devtoolset-11/root/usr/include
+    - -I/usr/include
+
