@@ -32,6 +32,7 @@ person data
     + zz, zt, zb 移动当前光标行到屏幕中间、顶部、底部
     + NvimTree
       - g? 显示快捷键
+    + Ctrl-^ 跳转到上次打开的文件
 
 * installed
     + exa, nnn
