@@ -30,7 +30,8 @@ keymap.set("n", "<leader>nl", ":nohl<CR>")
 -- 切换buffer
 keymap.set("n", "<A-L>", ":bnext<CR>")
 keymap.set("n", "<A-H>", ":bprevious<CR>")
-keymap.set("n", "<leader>bd", ":BufDel<CR>")
+keymap.set("n", "<leader>bd", ":bdelete<CR>")
+-- keymap.set("n", "<leader>bd", ":BufDel<CR>")
 
 -- quicklist
 vim.cmd([[
