@@ -29,6 +29,7 @@ person data
 
 * 快捷键
     + gd, K, gr, <space>rn
+    + zz, zt, zb 移动当前光标行到屏幕中间、顶部、底部
     + NvimTree
       - g? 显示快捷键
 
