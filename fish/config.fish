@@ -15,7 +15,7 @@ if status is-interactive
     alias l. "set -x LANGUAGE en_US.UTF-8; /usr/bin/ls -a --color=auto"
 
     alias vi nvim
-    alias lg "set -x LANG en_US.UTF-8; lazygit"
+    alias lg "set -x LC_ALL en_US.UTF-8; lazygit"
 end
 
 # LSP 可能会打开很多文件
