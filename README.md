@@ -37,6 +37,10 @@ person data
 * installed
     + exa, nnn
 
+* others
+    + 显示可安装包列表
+        - apt-cache policy <package name>
+        - snap info <package name>
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
