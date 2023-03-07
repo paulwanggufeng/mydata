@@ -1,6 +1,8 @@
+gui:
+    language: 'en'
 
 os:
-  editCommand: 'nvim'
+  editCommand: 'lvim'
   editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
 
 # git:
