@@ -33,6 +33,8 @@ keymap.set("n", "<A-H>", ":bprevious<CR>")
 keymap.set("n", "<leader>bd", ":bdelete<CR>")
 -- keymap.set("n", "<leader>bd", ":BufDel<CR>")
 
+keymap.set("n", "<leader>zf", "zf%<CR>", { noremap=true, silent=false })
+
 -- quicklist
 vim.cmd([[
 function!   QuickFixOpenAll()
@@ -59,7 +61,21 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 -- lsp, clangd
 keymap.set("n", "<F10>", ":ClangdSwitchSourceHeader<CR>")
 keymap.set("n", "<F36>", ":Telescope lsp_document_symbols<CR>", { noremap=true }) -- (F36 -> C-F12)
+keymap.set("n", "<F48>", ":Telescope lsp_workspace_symbols<CR>", { noremap=true }) -- (F48 -> C-S-F12)
 
-keymap.set('n', '<leader>gf', ':Telescope git_status<CR>')
+-- keymap.set('n', '<leader>gf', ':Telescope git_status<CR>')
 
+
+keymap.set("i", "<C-j>", "copilot#Accept('<CR>')", {noremap=true, expr=true, silent=true, replace_keycodes=false})
+-- local map = function (type, key, value, opts)
+--   local options = { noremap = true }
+--   if opts then options = vim.tbl_extend('force', options, opts) end
+--   vim.api.nvim_set_keymap(type, key, value, options)
+-- end
+-- map("i", "<C-j>", "copilot#Accept('<CR>')", {expr=true, silent=true, noremap=true})
+
+
+
+-- other category
+keymap.set('n', '<leader>ot', ':ToggleTerm<CR>')
 

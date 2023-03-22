@@ -1,12 +1,12 @@
 require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    },
-    PATH = "prepend",
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  },
+  PATH = "prepend",
 })
 
 -- Mappings.
@@ -16,6 +16,8 @@ vim.keymap.set('n', '<space>do', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+local navic = require("nvim-navic")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -44,48 +46,52 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   -- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-  vim.keymap.set('n', '<F55>', vim.lsp.buf.references, bufopts)   -- (F55 -> A-F7)
+  vim.keymap.set('n', '<F55>', vim.lsp.buf.references, bufopts) -- (F55 -> A-F7)
   vim.keymap.set('n', '<C-A-L>', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
 end
 
 local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
 }
 
 -- require("nvim-lsp-installer").setup {}
 
 require("mason-lspconfig").setup({
-    -- 确保安装，根据需要填写
-    ensure_installed = {
-    },
+  -- 确保安装，根据需要填写
+  ensure_installed = {
+  },
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("lspconfig").lua_ls.setup {
-    on_attach = on_attach,
-    cmd = { "lua-language-server" },
-    filetypes = { "lua" },
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            },
-        },
+  on_attach = on_attach,
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      },
     },
-    -- Lua = {
-    --     format = {
-    --         enable = true,
-    --         -- Put format options here
-    --         -- NOTE: the value should be STRING!!
-    --         defaultConfig = {
-    --             indent_style = "space",
-    --             indent_size = "2",
-    --         }
-    --     },
-    -- }
+  },
+  -- Lua = {
+  --     format = {
+  --         enable = true,
+  --         -- Put format options here
+  --         -- NOTE: the value should be STRING!!
+  --         defaultConfig = {
+  --             indent_style = "space",
+  --             indent_size = "2",
+  --         }
+  --     },
+  -- }
 }
 
 -- require("lspconfig").ccls.setup {
@@ -103,10 +109,8 @@ require("lspconfig").lua_ls.setup {
 -- }
 
 require("lspconfig").clangd.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    cmd = { "clangd", '--background-index', '--clang-tidy' }
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  cmd = { "clangd", '--background-index', '--clang-tidy' }
 }
-
-

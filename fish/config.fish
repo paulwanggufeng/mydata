@@ -12,8 +12,8 @@ if status is-interactive
   alias ll 'ls -l --color=auto --time-style=+"%Y-%m-%d %H:%M:%S"'
   alias l. 'ls -a --color=auto'
 
-  #alias vi nvim
-  alias vi lvim
+  alias vi nvim
+  # alias vi lvim
   alias lg lazygit
 
   #set -x VISUAL nvim

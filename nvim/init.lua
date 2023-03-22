@@ -5,10 +5,11 @@ require("core.keymaps")
 
 -- 插件
 require("plugins/comment")
-require("plugins.lualine")
 require("plugins/nvim-tree")
 require("plugins/treesitter")
 require("plugins/lsp")
+require("plugins/navic")
+require("plugins.lualine")
 require("plugins/cmp")
 require("plugins/autopairs")
 require("plugins/bufferline")
@@ -19,5 +20,4 @@ require("plugins/gitsigns")
 require("plugins/peek")
 require("plugins/wilder")
 require("plugins/toggleterm")
-
 

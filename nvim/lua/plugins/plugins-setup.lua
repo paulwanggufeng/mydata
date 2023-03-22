@@ -1,9 +1,9 @@
 -- 自动安装packer
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -26,24 +26,25 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim' -- 主题
 
-  use { "folke/which-key.nvim",  }
+  use { "folke/which-key.nvim", }
 
   use {
-    'nvim-lualine/lualine.nvim',  -- 状态栏
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }  -- 状态栏图标
+    'nvim-lualine/lualine.nvim',                              -- 状态栏
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true } -- 状态栏图标
+    -- requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- 状态栏图标
   }
   use {
-    'nvim-tree/nvim-tree.lua',  -- 文档树
+    'nvim-tree/nvim-tree.lua',       -- 文档树
     requires = {
       'nvim-tree/nvim-web-devicons', -- 文档树图标
     }
   }
   use "christoomey/vim-tmux-navigator" -- 用ctl-hjkl来定位窗口
-  use {'ojroques/nvim-bufdel'}
+  use { 'ojroques/nvim-bufdel' }
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',  -- 文件检索
-    requires = { {'nvim-lua/plenary.nvim'}
+    'nvim-telescope/telescope.nvim', tag = '0.1.1', -- 文件检索
+    requires = { { 'nvim-lua/plenary.nvim' }
     }
   }
   use {
@@ -51,56 +52,103 @@ return require('packer').startup(function(use)
   }
 
   -- 快速跳转
-use {
-  "ggandor/leap.nvim",
-  keys = { "s", "S" },
-  config = function()
-    local leap = require "leap"
-    leap.set_default_keymaps()
-  end,
-}
+  use {
+    "ggandor/leap.nvim",
+    keys = { "s", "S" },
+    config = function()
+      local leap = require "leap"
+      leap.set_default_keymaps()
+    end,
+  }
   use {
     "ggandor/flit.nvim",
-    requires = { 'ggandor/leap.nvim'},
-  config = function()
-    require('flit').setup {
-  keys = { f = 'f', F = 'F', t = 't', T = 'T' },
-  -- -- A string like "nv", "nvo", "o", etc.
-  -- labeled_modes = "v",
-  multiline = true,
-  -- Like `leap`s similar argument (call-specific overrides).
-  -- E.g.: opts = { equivalence_classes = {} }
-  opts = {}
-}
+    requires = { 'ggandor/leap.nvim' },
+    config = function()
+      require('flit').setup {
+        keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+        -- -- A string like "nv", "nvo", "o", etc.
+        -- labeled_modes = "v",
+        multiline = true,
+        -- Like `leap`s similar argument (call-specific overrides).
+        -- E.g.: opts = { equivalence_classes = {} }
+        opts = {}
+      }
     end
   }
   -- 命令行模糊搜索
-use {
-  'gelguy/wilder.nvim',
-   requires = { "romgrk/fzy-lua-native" },
-}
+  use {
+    'gelguy/wilder.nvim',
+    requires = { "romgrk/fzy-lua-native" },
+  }
 
   -- 命令行终端
---   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
---   require("toggleterm").setup()
--- end}
-  use {"akinsho/toggleterm.nvim", tag = '*' }
+  --   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  --   require("toggleterm").setup()
+  -- end}
+  use { "akinsho/toggleterm.nvim", tag = '*' }
 
 
   use "nvim-treesitter/nvim-treesitter" -- 语法高亮
+  use {
+    "romgrk/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup {
+        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
+        throttle = true, -- Throttles plugin updates (may improve performance)
+        max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
+        patterns = {
+                         -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+          -- For all filetypes
+          -- Note that setting an entry here replaces all other patterns for this entry.
+          -- By setting the 'default' entry below, you can control which nodes you want to
+          -- appear in the context window.
+          default = {
+            'class',
+            'function',
+            'method',
+          },
+        },
+      }
+    end
+  }
+
+use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+}
+
   use "p00f/nvim-ts-rainbow" -- 配合treesitter，不同括号颜色区分
   use {
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",  -- 这个相当于mason.nvim和lspconfig的桥梁
+    "williamboman/mason-lspconfig.nvim", -- 这个相当于mason.nvim和lspconfig的桥梁
     "williamboman/nvim-lsp-installer",
     "neovim/nvim-lspconfig"
   }
 
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  -- better quickfix window
+  use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+  -- optional
+  use { 'junegunn/fzf', run = function()
+    vim.fn['fzf#install']()
+  end
+  }
+
 use {
-  "folke/trouble.nvim",
-  requires = "nvim-tree/nvim-web-devicons",
+  "ahmedkhalf/project.nvim",
   config = function()
-    require("trouble").setup {
+    require("project_nvim").setup {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
@@ -108,7 +156,8 @@ use {
   end
 }
 
- -- 自动补全
+
+  -- 自动补全
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-path" -- 文件路径
@@ -120,13 +169,13 @@ use {
   -- use "sbdchd/neoformat" -- 格式化
   use "windwp/nvim-autopairs" -- 自动补全括号
 
---   use({
---     "jose-elias-alvarez/null-ls.nvim",
---     -- config = function()
---     --     require("null-ls").setup()
---     -- end,
---     requires = { "nvim-lua/plenary.nvim" },
--- })
+  --   use({
+  --     "jose-elias-alvarez/null-ls.nvim",
+  --     -- config = function()
+  --     --     require("null-ls").setup()
+  --     -- end,
+  --     requires = { "nvim-lua/plenary.nvim" },
+  -- })
 
   use "akinsho/bufferline.nvim" -- buffer分割线
 
@@ -137,7 +186,7 @@ use {
   -- markdown
   use({
     'toppair/peek.nvim',
-    run = 'deno task --quiet build:fast' 
+    run = 'deno task --quiet build:fast'
   })
 
 
