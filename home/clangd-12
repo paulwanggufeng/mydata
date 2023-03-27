@@ -1,23 +1,21 @@
 CompileFlags:
     Add:
-    -ferror-limit=0
-
-    - -I/usr/include/c++/12
-    - -I/usr/include/x86_64-linux-gnu/c++/12
-    - -I/usr/include/c++/12/backward
-    - -I/usr/lib/gcc/x86_64-linux-gnu/12/include
-    - -I/usr/local/include
-    - -I/usr/include/x86_64-linux-gnu
-    - -I/usr/include
-
-    - -I- -DLOCAL
-    - -I- -Wall
-    - -I- -O2
-    - -I- -Wextra
-    - -I- -Wshadow
-    - -I- -Wconversion
-    - -I- -Wfloat-equal
-    - -I- -Wno-unused-const-variable
-    - -I- -Wno-sign-conversion
-    - -I- -std=c++20
+        - "-ferror-limit=0"
+        - "-DLOCAL"
+        - "-Wall"
+        - "-O2"
+        - "-Wextra"
+        - "-Wshadow"
+        - "-Wconversion"
+        - "-Wfloat-equal"
+        - "-Wno-unused-const-variable"
+        - "-Wno-sign-conversion"
+        - "-std=c++20"
+        - "-I/usr/include/c++/12"
+        - "-I/usr/include/x86_64-linux-gnu/c++/12"
+        - "-I/usr/include/c++/12/backward"
+        - "-I/usr/lib/gcc/x86_64-linux-gnu/12/include"
+        - "-I/usr/local/include"
+        - "-I/usr/include/x86_64-linux-gnu"
+        - "-I/usr/include"
 
