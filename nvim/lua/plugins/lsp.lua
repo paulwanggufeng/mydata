@@ -17,8 +17,6 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
-local navic = require("nvim-navic")
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -34,7 +32,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -47,10 +45,11 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
   vim.keymap.set('n', '<F55>', vim.lsp.buf.references, bufopts) -- (F55 -> A-F7)
-  vim.keymap.set('n', '<C-A-L>', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set({'n', 'i'}, '<C-A-L>', function() vim.lsp.buf.format { async = true } end, bufopts)
 
   if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
+    require("nvim-navic").attach(client, bufnr)
+    -- require("breadcrumb").attach(client, bufnr)
   end
 end
 
@@ -81,36 +80,13 @@ require("lspconfig").lua_ls.setup {
       },
     },
   },
-  -- Lua = {
-  --     format = {
-  --         enable = true,
-  --         -- Put format options here
-  --         -- NOTE: the value should be STRING!!
-  --         defaultConfig = {
-  --             indent_style = "space",
-  --             indent_size = "2",
-  --         }
-  --     },
-  -- }
 }
 
--- require("lspconfig").ccls.setup {
---     -- on_attach = on_attach,
---     --   flags = lsp_flags,
---     -- capabilities = capabilities,
---     init_options = {
---         cache = {
---             directory = ".ccls-cache",
---         },
---         clang = {
---             excludeArgs = { "-frounding-math" },
---         },
---     }
--- }
-
+local clangd_capabilities = capabilities
+clangd_capabilities.offsetEncoding = "utf-8"
 require("lspconfig").clangd.setup {
   on_attach = on_attach,
   flags = lsp_flags,
-  capabilities = capabilities,
+  capabilities = clangd_capabilities,
   cmd = { "clangd", '--background-index', '--clang-tidy' }
 }

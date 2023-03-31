@@ -97,7 +97,7 @@ return require('packer').startup(function(use)
         throttle = true, -- Throttles plugin updates (may improve performance)
         max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
         patterns = {
-                         -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+          -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
           -- For all filetypes
           -- Note that setting an entry here replaces all other patterns for this entry.
           -- By setting the 'default' entry below, you can control which nodes you want to
@@ -111,13 +111,20 @@ return require('packer').startup(function(use)
       }
     end
   }
+  -- 语法树
+  use {
+    'stevearc/aerial.nvim',
+    config = function() require('aerial').setup() end
+  }
 
-use {
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig"
-}
+  use { "RRethy/nvim-treesitter-textsubjects" } -- 智能选择文本对象, 如 v. 选择一个句子; v, 选择上一次选择的内容
 
-  use "p00f/nvim-ts-rainbow" -- 配合treesitter，不同括号颜色区分
+  use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
+  -- use { "loctvl842/breadcrumb.nvim", requires = { "nvim-tree/nvim-web-devicons" } }
+
+  use { "RRethy/vim-illuminate" } -- 高亮光标下的单词
+
+  use "p00f/nvim-ts-rainbow"      -- 配合treesitter，不同括号颜色区分
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim", -- 这个相当于mason.nvim和lspconfig的桥梁
@@ -145,16 +152,16 @@ use {
   end
   }
 
-use {
-  "ahmedkhalf/project.nvim",
-  config = function()
-    require("project_nvim").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
 
   -- 自动补全

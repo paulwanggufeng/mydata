@@ -1,6 +1,4 @@
-local navic = require("nvim-navic")
-
-navic.setup {
+require("nvim-navic").setup {
   icons = {
     Array = " ",
     Boolean = "蘒",
@@ -42,14 +40,3 @@ navic.setup {
   depth_limit_indicator = "..",
   safe_output = true,
 }
-
-
--- local on_attach = function(client, bufnr)
---   if client.server_capabilities.documentSymbolProvider then
---     navic.attach(client, bufnr)
---   end
--- end
---
--- require("lspconfig").clangd.setup {
---   on_attach = on_attach
--- }
