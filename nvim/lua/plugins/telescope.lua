@@ -8,6 +8,15 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
 
+local find_symbols = [[<cmd>lua require('telescope.builtin').lsp_document_symbols({symbol_width = 0.8})<cr>]]
+vim.keymap.set('n', '<F36>', find_symbols, { noremap = true, silent = true }) -- (F36 -> C-F12)
+
+local find_w_symbols =
+[[<cmd>lua require('telescope.builtin').lsp_workspace_symbols({fname_width = 0.6, symbol_width = 0.2})<cr>]]
+vim.keymap.set('n', '<F48>', find_w_symbols, { noremap = true, silent = true }) -- (F48 -> C-S-F12)
+
+-- keymap.set('n', '<leader>gf', ':Telescope git_status<CR>')
+
 vim.keymap.set('n', '<leader><space>', '<cmd>Telescope buffers<cr>')
 vim.keymap.set('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
 vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
@@ -31,8 +40,9 @@ require('telescope').setup {
       n = {
         ['<C-d>'] = require('telescope.actions').delete_buffer,
       }
-    }, -- mappings
-  },   -- defaults
+    },                                        -- mappings
+    lsp_workspace_symbols_max_results = 2000, -- not sure if it works
+  },                                          -- defaults
   extensions = {
     fzf = {
       fuzzy = true,                   -- false will only do exact matching
