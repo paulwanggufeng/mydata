@@ -3,6 +3,11 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- 命令
+keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
+keymap.set({"i", "v", "x"}, "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
+keymap.set("n", "<C-Del>", "de", { noremap = true, silent = true })
+keymap.set("i", "<C-Del>", "<Esc>ldei", { noremap = true, silent = true })
+
 vim.cmd([[
   cnoreabbrev Q qa
   vnoremap <C-c> "*y
@@ -76,5 +81,3 @@ keymap.set("i", "<C-j>", "copilot#Accept('<CR>')",
 -- other category
 keymap.set('n', '<leader>a', '<cmd>AerialToggle! left<CR>')
 keymap.set('n', '<leader>ot', ':ToggleTerm<CR>')
-
-
