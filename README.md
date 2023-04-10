@@ -1,23 +1,18 @@
 person data
 
 
-* search
-    + class, function
-    + find usages
-    + set exclude directory (e.g. build/debug/release)
-    
 * gdb
     + compile
     + debug (breakpoint, view windows)
 
-
-* plugins
-    + md
-    + 
-
 * command
     + NvimTreeFindFile 跳转到 NvimTree 上文件对应位置
     + :Telescope live_grep search_dirs=. 在指定目录搜索文件内容
+    + :Telescope live_grep search_dirs=%:p 在当前打开的文件中搜索字符串
+      - 上面的命令等同与 :lua require'telescope.builtin'.live_grep{ search_dirs={"%:p"} }
+    + :Telescope live_grep grep_open_files=true 在当前所有打开的文件中搜索字符串
+    + :Telescope lsp_document_symbols symbols=metho 在当前buffer只查找 method
+      - :lua require("telescope.builtin").lsp_document_symbols({ symbols = { "class", "field" } }) 查询多个类型
     + :cc 打开 quicklist 第一条
       - :cn 打开 quicklist 下一条
       - :cp 打开 quicklist 前一条
@@ -32,7 +27,6 @@ person data
 
 
 * 快捷键
-    + gd, K, gr, <space>rn
     + zz, zt, zb 移动当前光标行到屏幕中间、顶部、底部
     + NvimTree
       - g? 显示快捷键
@@ -66,11 +60,12 @@ person data
         - zE deletes all folds.
         - [z move to start of open fold.
         - ]z move to end of open fold.
-
-
-
-* installed
-    + exa, nnn
+    + Using jump list
+        - Like a web browser, you can go back, then forward:
+        - Press Ctrl-O to jump back to the previous (older) location.
+        - Press Ctrl-I (same as Tab) to jump forward to the next (newer) location.
+        - Display the jump list for the current window with:
+            + :jumps
 
 * others
     + 显示可安装包列表
@@ -84,26 +79,7 @@ display number of current buffer
 :echo bufnr('%')
 
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<C-A-L>', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-
-可自行文件
-/etc/rc.local
-
-#!/bin/sh -e
-
-sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o umask=022
 
 
 

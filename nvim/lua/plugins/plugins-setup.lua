@@ -103,6 +103,7 @@ return require('packer').startup(function(use)
           -- By setting the 'default' entry below, you can control which nodes you want to
           -- appear in the context window.
           default = {
+            'namespace',
             'class',
             'function',
             'method',

@@ -3,8 +3,9 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- 命令
-keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
-keymap.set({"i", "v", "x"}, "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
+keymap.set("n", "<C-s>", ":wa<CR>", { noremap = true, silent = true })
+keymap.set({ "i", "v", "x" }, "<C-s>", "<Esc>:wa<CR>", { noremap = true, silent = true })
+keymap.set("i", "<C-s>", "<Esc>:wa<CR>li", { noremap = true, silent = true })
 keymap.set("n", "<C-Del>", "de", { noremap = true, silent = true })
 keymap.set("i", "<C-Del>", "<Esc>ldei", { noremap = true, silent = true })
 
@@ -12,6 +13,15 @@ vim.cmd([[
   cnoreabbrev Q qa
   vnoremap <C-c> "*y
 ]])
+
+
+-- quickfix 窗口总是显示在最下面
+-- wincmd foo is equivalent with typing ^W foo, and CTRL-W_J moves the current window to the very bottom.
+-- au FileType qf executes this for every file with the filetype "qf" (quickfix).
+vim.cmd([[
+au FileType qf wincmd J
+]])
+
 
 -- ---------- 插入模式 ---------- ---
 -- Ctrl+Backspace, Ctrl+H 等于向前删除一个 word
@@ -26,8 +36,6 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- 窗口
 keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
-keymap.set("n", "<F7>", "]c")           -- jump to next diff
-keymap.set("n", "<F19>", "[c")          -- jump to next diff (F19 -> S-F7)
 
 -- 取消高亮
 keymap.set("n", "<leader>nl", ":nohl<CR>")
@@ -58,6 +66,19 @@ endfunction
 ]])
 vim.api.nvim_set_keymap('n', '<leader>ka', ':call QuickFixOpenAll()<CR>', { noremap = true, silent = false })
 
+
+-- 根据不同窗口设置快捷键
+-- F19 -> S-F7
+-- function SET_DIFF_KEYMAP()
+--   vim.keymap.set("n", "<F7>", "]c")  -- jump to next diff
+--   vim.keymap.set("n", "<F19>", "[c") -- jump to prev diff (F19 -> S-F7)
+-- end
+--
+-- function SET_QFIX_KEYMAP()
+-- end
+
+vim.keymap.set("n", "<F7>", ":cn<cr>")
+vim.keymap.set("n", "<F19>", ":cprev<cr>")
 
 -- ---------- 插件 ---------- ---
 -- nvim-tree
