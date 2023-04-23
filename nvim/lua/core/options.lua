@@ -27,6 +27,8 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- 搜索
+opt.hlsearch = true
+opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 
@@ -39,5 +41,13 @@ vim.cmd[[colorscheme tokyonight-moon]]
 -- Buffers/Tabs/Windows
 -- bdelete, BufDel require hidden 
 opt.hidden = true
+
+-- 文件编码
+vim.scriptencoding = "utf-8"
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+
+opt.swapfile = false
+opt.autoread = true
 
 

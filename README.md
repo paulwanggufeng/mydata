@@ -24,6 +24,8 @@ person data
     + <leader>fd open diagnostic
     + ]d next diagnostic
     + <leader>ca code action 应用diagnostic修改建议
+    + :%!sort -k2nr 整个文件按第二列排序,排序以数字顺序排序(默认为字典顺序),降序排序
+        - :'<,'>!sort -k2nr  排序范围为选择区域
 
 
 * 快捷键

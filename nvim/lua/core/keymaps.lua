@@ -5,9 +5,10 @@ local keymap = vim.keymap
 -- 命令
 keymap.set("n", "<C-s>", ":wa<CR>", { noremap = true, silent = true })
 keymap.set({ "i", "v", "x" }, "<C-s>", "<Esc>:wa<CR>", { noremap = true, silent = true })
-keymap.set("i", "<C-s>", "<Esc>:wa<CR>li", { noremap = true, silent = true })
+keymap.set("i", "<C-s>", "<Esc>:wa<CR>a", { noremap = true, silent = true })
 keymap.set("n", "<C-Del>", "de", { noremap = true, silent = true })
 keymap.set("i", "<C-Del>", "<Esc>ldei", { noremap = true, silent = true })
+keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
 
 vim.cmd([[
   cnoreabbrev Q qa
@@ -40,17 +41,20 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 -- 取消高亮
 keymap.set("n", "<leader>nl", ":nohl<CR>")
 
+-- 注释当前单词,可用于快速注释 'Unused parameter'
+-- 'CommentUnusedparameter'
+keymap.set("n", "<leader>cu", "ciw/*<Esc>pa*/<Esc>")
+
 -- 切换buffer
-keymap.set("n", "<A-L>", ":bnext<CR>")
-keymap.set("n", "<A-H>", ":bprevious<CR>")
-keymap.set("n", "<leader>bd", ":bdelete<CR>")
--- keymap.set("n", "<leader>bd", ":BufDel<CR>")
+-- keymap.set("n", "<A-h>", ":bprevious<CR>")
+-- keymap.set("n", "<A-l>", ":bnext<CR>")
 
 keymap.set("n", "<leader>zf", "zf%<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>zF", ":%g/^{/ normal! zf%<CR>", { noremap = true, silent = false }) -- fold all functions
 
 -- quicklist
 vim.cmd([[
-function!   QuickFixOpenAll()
+function! QuickFixOpenAll()
     if empty(getqflist())
         return
     endif
