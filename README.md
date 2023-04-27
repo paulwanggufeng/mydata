@@ -26,13 +26,10 @@ person data
     + <leader>ca code action 应用diagnostic修改建议
     + :%!sort -k2nr 整个文件按第二列排序,排序以数字顺序排序(默认为字典顺序),降序排序
         - :'<,'>!sort -k2nr  排序范围为选择区域
+    + 在其他terminal编译并将错误输出到文件,并在 quickfix list 中打开错误
+        - make -C build -j6 my_application 2>&1 | tee backup/compile.txt
+        - :cexpr system('cat backup/compile.txt')
 
-
-* 快捷键
-    + zz, zt, zb 移动当前光标行到屏幕中间、顶部、底部
-    + NvimTree
-      - g? 显示快捷键
-    + Ctrl-^ 跳转到上次打开的文件
 
 * vim key
     + move screen
@@ -63,6 +60,7 @@ person data
         - [z move to start of open fold.
         - ]z move to end of open fold.
     + Using jump list
+        - Ctrl-^ 跳转到上次打开的文件
         - Like a web browser, you can go back, then forward:
         - Press Ctrl-O to jump back to the previous (older) location.
         - Press Ctrl-I (same as Tab) to jump forward to the next (newer) location.
