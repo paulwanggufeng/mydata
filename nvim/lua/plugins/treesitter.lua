@@ -1,6 +1,6 @@
 require 'nvim-treesitter.configs'.setup {
   -- 添加不同语言
-  ensure_installed = { "vim", "help", "bash", "cpp", "json", "lua", "python", "markdown", }, -- one of "all" or a list of languages
+  ensure_installed = { "vim", "vimdoc", "bash", "cpp", "json", "lua", "python", "markdown", }, -- one of "all" or a list of languages
 
   highlight = { enable = true },
   indent = { enable = true },

@@ -4,6 +4,8 @@ if status is-interactive
   set -x LANG en_US.UTF-8
   set -x LANGUAGE en_US:en
 
+  fish_add_path ~/.local/bin
+
   # Commands to run in interactive sessions can go here
   alias egrep='egrep --color=auto'
   alias fgrep='fgrep --color=auto'
@@ -13,11 +15,9 @@ if status is-interactive
   alias l. 'ls -a --color=auto'
 
   alias vi nvim
-  # alias vi lvim
   alias lg lazygit
 
-  #set -x VISUAL nvim
-  set -x VISUAL lvim
+  set -x VISUAL nvim
 end
 
 # LSP 可能会打开很多文件

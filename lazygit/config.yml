@@ -2,7 +2,7 @@ gui:
     language: 'en'
 
 os:
-  editCommand: 'lvim'
+  editCommand: 'nvim'
   editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
 
 # git:

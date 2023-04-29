@@ -8,6 +8,11 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
 
+-- 查找光标下的词
+local grep_current_word =
+[[<cmd>lua require('telescope.builtin').grep_string{ on_complete = { function() vim.cmd"stopinsert" end } }<cr>]]
+vim.keymap.set('n', '<leader>fw', grep_current_word, { noremap = true, silent = true })
+
 -- 在当前打开的文件中搜索字符串
 -- - 上面的命令等同与 :lua require'telescope.builtin'.live_grep{ search_dirs={"%:p"} }
 local current_file_search = [[<cmd>lua require('telescope.builtin').live_grep{ search_dirs={"%:p"} }<cr>]]
@@ -46,6 +51,7 @@ require('telescope').setup {
         ['<C-d>'] = require('telescope.actions').delete_buffer,
       }
     },                                                -- mappings
+    initial_mode = 'insert',                          -- insert/normal
     lsp_dynamic_workspace_symbols_max_results = 2000, -- not sure if it works
   },                                                  -- defaults
   extensions = {
