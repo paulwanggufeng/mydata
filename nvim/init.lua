@@ -23,4 +23,5 @@ require("plugins/wilder")
 require("plugins/toggleterm")
 -- require("plugins/breadcrumb")
 require("plugins/illuminate")
+require("plugins/todo-comments")
 
