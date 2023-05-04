@@ -3,9 +3,8 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- 命令
-keymap.set("n", "<C-s>", ":wa<CR>", { noremap = true, silent = true })
-keymap.set({ "i", "v", "x" }, "<C-s>", "<Esc>:wa<CR>", { noremap = true, silent = true })
-keymap.set("i", "<C-s>", "<Esc>:wa<CR>a", { noremap = true, silent = true })
+
+keymap.set({ "n", "i", "v", "x" }, "<C-s>", "<cmd>wa<cr>", { noremap = true, silent = true })
 keymap.set("n", "<C-Del>", "de", { noremap = true, silent = true })
 keymap.set("i", "<C-Del>", "<Esc>ldei", { noremap = true, silent = true })
 keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
