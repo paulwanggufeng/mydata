@@ -45,7 +45,7 @@ person data
         - zb - move current line to the bottom of the screen
     + Vim folding commands
         - zf#j creates a fold from the cursor down # lines.
-        - zf/ string creates a fold from the cursor to string .
+        - zf/string creates a fold from the cursor to string .
         - zj moves the cursor to the next fold.
         - zk moves the cursor to the previous fold.
         - za toggle a fold at the cursor.
@@ -71,6 +71,8 @@ person data
 * others
     + 显示可安装包列表
         - apt-cache policy <package name>
+        - apt-cache madison <package name>
+            * apt list -a <package name>
         - snap info <package name>
 
 run lua command in nvim

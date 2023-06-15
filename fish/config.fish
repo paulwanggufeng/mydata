@@ -4,7 +4,7 @@ if status is-interactive
   set -x LANG en_US.UTF-8
   set -x LANGUAGE en_US:en
 
-  fish_add_path ~/.local/bin
+  fish_add_path ~/.local/bin ~/.cargo/bin
 
   # Commands to run in interactive sessions can go here
   alias egrep='egrep --color=auto'
