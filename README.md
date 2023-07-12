@@ -68,6 +68,10 @@ person data
         - Display the jump list for the current window with:
             + :jumps
 
+* git
+    + show a commit merge time (not commit time)
+        - git log --pretty=format:"%ci [%h] %s" <commit-id> | head -1
+
 * others
     + 显示可安装包列表
         - apt-cache policy <package name>
