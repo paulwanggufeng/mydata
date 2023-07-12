@@ -2,8 +2,8 @@ gui:
     language: 'en'
 
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+  edit: 'nvim {{filename}}'
+  editAtLine: '{{editor}} +{{line}} -- {{filename}}'
 
 # git:
 #   paging:
