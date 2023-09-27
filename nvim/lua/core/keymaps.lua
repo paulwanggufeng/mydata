@@ -103,5 +103,4 @@ keymap.set("i", "<C-j>", "copilot#Accept('<CR>')",
 
 
 -- other category
-keymap.set('n', '<leader>a', '<cmd>AerialToggle! left<CR>')
 keymap.set('n', '<leader>ot', ':ToggleTerm<CR>')

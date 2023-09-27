@@ -112,11 +112,6 @@ return require('packer').startup(function(use)
       }
     end
   }
-  -- 语法树
-  use {
-    'stevearc/aerial.nvim',
-    config = function() require('aerial').setup() end
-  }
 
   use { "RRethy/nvim-treesitter-textsubjects" } -- 智能选择文本对象, 如 v. 选择一个句子; v, 选择上一次选择的内容
 
