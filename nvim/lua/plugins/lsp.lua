@@ -58,7 +58,7 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- require("nvim-lsp-installer").setup {}
+require("nvim-lsp-installer").setup {}
 
 require("mason-lspconfig").setup({
   -- 确保安装，根据需要填写

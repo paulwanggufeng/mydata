@@ -2,3 +2,6 @@
 nvim/plugin/
 
 nvim/lua/.luarc.json
+
+new_env/.done
+new_env/.temp

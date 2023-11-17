@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Pycharm
+Icon=/home/wangbc/mytools/pycharm/bin/pycharm.svg
+Exec=/home/wangbc/mytools/pycharm/bin/pycharm.sh %f
+Comment=Develop with pleasure!
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-pycharm

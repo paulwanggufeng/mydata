@@ -161,6 +161,7 @@ return require('packer').startup(function(use)
     end
   }
 
+  use "github/copilot.vim"
 
   -- 自动补全
   use "hrsh7th/nvim-cmp"
